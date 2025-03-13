@@ -90,6 +90,7 @@ const SearchForm = () => {
             <RoomStepper />
           </div>
           <div className="mb-4">
+            <label className="label mb-3 block">Select Adults number</label>
             <AdultsStepper />
           </div>
           <button type="submit" className="btn btn-accent w-fit">
