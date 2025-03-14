@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Task - Hotel Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a hotel search application that interacts with the **MakCorps API** to fetch hotel data. Users must provide their own API key to access the service.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- Hotel search functionality
+- API key storage using **Zustand** (Global State Management)
+- Data fetching with **React Query**
+- TypeScript support
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/OusamaMahmoud/task.git
+cd task
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### **2️⃣ Install Dependencies**
+```sh
+npm install
 ```
+
+### **3️⃣ Start the Development Server**
+```sh
+npm run dev
+```
+
+## 🔑 API Key Setup
+1. **Sign up** at [MakCorps API](https://docs.makcorps.com/) to get an API key.
+2. **Enter your API key** in the input field provided in the app.
+3. The API key is stored globally using Zustand and will be used automatically in API requests.
+
+## ⚙️ Tech Stack
+- **React**
+- **Zustand** (State Management)
+- **React Query** (Data Fetching)
+- **TypeScript**
+- **Tailwind CSS** (Styling)
+
+## 🛠 How to Contribute
+1. **Fork this repository.**
+2. **Create a new branch:** `git checkout -b feature-name`
+3. **Commit your changes:** `git commit -m "Added a new feature"`
+4. **Push to the branch:** `git push origin feature-name`
+5. **Open a Pull Request.**
+
+## 📄 License
+This project is licensed under the **MIT License**.
+
