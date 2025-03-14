@@ -19,12 +19,18 @@ import ApiKeyInput from "./ApiKeyInput";
 import useApiKeyStore from "../store/useApiKeyStore";
 
 const SearchForm = () => {
+  // use api_key from User if the default is reach the limit.
   const { apiKey } = useApiKeyStore();
 
   const [cityID, setCityID] = useState("");
+
   const [searchParams, setSearchParams] = useState<null | HotelSearchParams>(
     null
   );
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // use React hook form
   const methods = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
@@ -38,6 +44,7 @@ const SearchForm = () => {
       tax: false, // Default: false (prices without tax)
     },
   });
+
   const {
     register,
     handleSubmit,
@@ -48,14 +55,17 @@ const SearchForm = () => {
   const hotelName = watch("hotelName");
   const debouncedHotelName = useDebounce(hotelName, 500); // Use debounce hook
 
-  // Fetch city IDs with debounced hotel name
+  // First , we should Fetch city IDs (document_id) with debounced hotel name;
   const {
     data: cityIDs,
     error: cityIDsError,
     isError: isCityIDsError,
   } = useFetchCityIDs(debouncedHotelName || "", apiKey);
 
-  // get City ID
+  // If the type property has a value of HOTEL then the document_id
+  //  will be your hotel ID and if the type property has a value GEO
+  // then the value of document_id will be your city ID.
+
   useEffect(() => {
     const targetGEOType = cityIDs?.find((city) => city.type === "GEO");
     const DOCUMENT_ID = targetGEOType?.document_id;
@@ -67,6 +77,7 @@ const SearchForm = () => {
       toast.error(cityIDsError?.response?.data?.message);
   }, [cityIDsError, isCityIDsError]);
 
+  // Fetch Hotels only if searchParams is exist;
   const {
     data: hotels,
     isLoading,
@@ -74,7 +85,6 @@ const SearchForm = () => {
     error: hotelsError,
   } = useFetchHotels(searchParams);
 
-  const [currentPage, setCurrentPage] = useState(0);
   const onSubmit: SubmitHandler<SearchFormInputs> = (data) => {
     if (!cityID) {
       toast.error(
@@ -83,7 +93,6 @@ const SearchForm = () => {
       return;
     }
 
-    console.log("Form Data =>", data);
     setCurrentPage(0);
     setSearchParams({
       ...data,
@@ -94,9 +103,6 @@ const SearchForm = () => {
   };
 
   const handlePageChange = (newPage: number) => {
-    // Directly update searchParams without changing currentPage state
-    console.log("Changing to page:", newPage);
-
     if (searchParams) {
       setSearchParams({
         ...searchParams,
