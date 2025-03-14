@@ -6,6 +6,9 @@ export const searchFormSchema = z.object({
   checkout: z.string().min(1, { message: "Please fill this field." }),
   rooms: z.number(),
   adults: z.number(),
+  childrens: z.number(),
+  cur: z.string().min(1, { message: "Please fill this field." }),
+  tax: z.boolean(),
 });
 
 export type SearchFormInputs = z.infer<typeof searchFormSchema>;

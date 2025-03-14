@@ -1,4 +1,3 @@
-// src/components/AdultsStepper.tsx
 import { useFormContext } from "react-hook-form";
 
 const AdultsStepper = () => {

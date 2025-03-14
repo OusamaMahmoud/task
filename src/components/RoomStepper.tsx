@@ -1,4 +1,3 @@
-// src/components/RoomStepper.tsx
 import { useFormContext } from "react-hook-form";
 
 const RoomStepper = () => {
