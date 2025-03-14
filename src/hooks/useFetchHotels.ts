@@ -1,4 +1,3 @@
-// src/hooks/useFetchHotels.ts
 import { useQuery } from "@tanstack/react-query";
 import apiClint from "../services/api-Client";
 import { HotelApiResponse } from "../types/Hotel";

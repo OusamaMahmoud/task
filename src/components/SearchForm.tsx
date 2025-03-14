@@ -28,7 +28,7 @@ const SearchForm = () => {
     null
   );
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const [, setCurrentPage] = useState(0);
 
   // use React hook form
   const methods = useForm<SearchFormInputs>({

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClint from "../services/api-Client";
-import useApiKeyStore from "../store/useApiKeyStore";
 
 interface MappingObject {
   type: string;

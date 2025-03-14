@@ -3,7 +3,7 @@ import SearchForm from "./components/SearchForm";
 
 export default function App() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col container mx-auto">
       <ToastContainer />
 
       <div className="mt-5">
